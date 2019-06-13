@@ -10,8 +10,12 @@ const forecast = (lat, lng, callback) => {
         }else {
             const {summary} = body.currently
             const {temperature} = body.currently
+            const {precipProbability} = body.currently
+            const {daily} = body
+            console.log(body)
 
-            const weather = `It is currently ${summary.toLowerCase()}. The temperature is ${temperature}.`
+            const weather = `It is currently ${summary.toLowerCase()}. The temperature is ${temperature}. There is a ${precipProbability}% change of rain.
+            ${daily.summary}`
             callback(null, weather)
         }
     })
