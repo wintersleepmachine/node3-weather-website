@@ -11,11 +11,10 @@ const forecast = (lat, lng, callback) => {
             const {summary} = body.currently
             const {temperature} = body.currently
             const {precipProbability} = body.currently
-            const {daily} = body
-            console.log(body)
+            const todaysData = body.daily.data[0]
 
             const weather = `It is currently ${summary.toLowerCase()}. The temperature is ${temperature}. There is a ${precipProbability}% change of rain.
-            ${daily.summary}`
+            The high and low temperature for today is ${todaysData.temperatureHigh} and ${todaysData.temperatureLow}, respectively`
             callback(null, weather)
         }
     })
